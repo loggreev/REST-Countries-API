@@ -1,0 +1,15 @@
+body{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+body.darkMode{
+    background-color: hsl(207, 26%, 17%);
+    color: hsl(0, 0%, 100%);
+}
+
+body.lightMode{
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(200, 15%, 8%);
+}
