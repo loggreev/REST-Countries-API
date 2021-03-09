@@ -1,13 +1,39 @@
 .DetailView{
-    margin-top: 39px;
+    margin-top: 38px;
     margin-left: 28px;
     margin-right: 28px;
 }
 
-.DetailView .Flag{
-    margin: 50px 0;
-}
-
 .DetailView .back-button{
     width: 105px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+@media (orientation: landscape){
+    .DetailView .country-info{
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9em;
+        max-height: 400px;
+        /* height:400px; */
+    }
+    .DetailView .country-info>*{
+        /* flex: 1; */
+        width: 45%;
+    }
+    .DetailView .country-stats .secondary-stats{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 160px;
+    }
+    .DetailView .country-stats .secondary-stats .CountryInfoStat{
+        width: 50%;
+        margin:0;
+        flex-basis: 20%;
+    }
+    .blankspace{
+        display:none;
+    }
 }

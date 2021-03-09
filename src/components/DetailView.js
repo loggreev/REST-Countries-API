@@ -14,7 +14,7 @@ function DetailView(props) {
         );
         if (key === 'Capital') {
             stats.push(
-                <p key="blankspace">&nbsp;</p>
+                <p key="blankspace" className="blankspace">&nbsp;</p>
             )
         }
     }
@@ -26,12 +26,16 @@ function DetailView(props) {
                 &nbsp;
             Back
             </div>
-            <div className="CountryInfo">
+            <div className="country-info">
                 <Flag flag={countryData.flag} />
-                <h1>{countryData.countryname}</h1>
-                {stats}
-                <p>&nbsp;</p>
-                <BorderCountries data={countryData.bordercountries} />
+                <div className="country-stats">
+                    <h1>{countryData.countryname}</h1>
+                    <div className="secondary-stats">
+                        {stats}
+                    </div>
+                    <p>&nbsp;</p>
+                    <BorderCountries data={countryData.bordercountries} />
+                </div>
             </div>
         </div>
     );

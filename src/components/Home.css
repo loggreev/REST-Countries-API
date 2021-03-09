@@ -66,3 +66,21 @@
 .option{
     margin: 15px 0;
 }
+
+@media (orientation: landscape){
+    .Home .search-filter-container{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Home .search-filter-container .search-input{
+        flex-basis: 480px;
+        
+    }
+
+    .Home .countries-container{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}

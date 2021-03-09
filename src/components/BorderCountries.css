@@ -8,10 +8,11 @@
 }
 
 .BorderCountries .item{
-    flex: 1;
+    /* flex: 1; */
+    /* flex-basis: 20%; */
     font-size: 0.9em;
-    min-width: 96px;
-    max-width: 100px;
+    min-width: 95px;
+    max-width: 95px;
     height: 28px;
     display: flex;
     justify-content: center;

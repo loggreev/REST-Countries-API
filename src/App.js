@@ -34,8 +34,8 @@ function App() {
   function callApi() {
     // store api results in session storage (expires when tab is closed)
     if (!sessionStorage.getItem('apiCall')) {
-      // fetch(new Request('https://restcountries.eu/rest/v2/all'))
-      fetch(new Request('https://restcountries.eu/rest/v2/lang/es'))
+      // fetch(new Request('https://restcountries.eu/rest/v2/lang/es'))
+      fetch(new Request('https://restcountries.eu/rest/v2/all'))
         .then(response => response.json())
         .then(parsedJSON => {
           const data = parsedJSON.map((country) => {

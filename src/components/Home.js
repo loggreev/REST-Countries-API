@@ -51,8 +51,9 @@ function Home(props) {
                     {displayDropdown && dropdown_items}
                 </div>
             </div>
-
-            {countries}
+            <div className="countries-container">
+                {countries}
+            </div>
         </div>
     );
 }

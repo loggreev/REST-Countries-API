@@ -1,4 +1,4 @@
-.MiniCountryContainer.element{
+.MiniCountryContainer{
     padding-top: 0;
     text-align: left;
     margin-bottom: 40px;
@@ -10,4 +10,11 @@
 
 .MiniCountryContainer h1{
     font-size: 1.5em;
+}
+
+@media (orientation: landscape){
+    .MiniCountryContainer{
+        max-width: 250px;
+        margin-bottom: 20px;
+    }
 }
