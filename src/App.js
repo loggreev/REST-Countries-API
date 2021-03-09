@@ -57,6 +57,9 @@ function App() {
           })
           sessionStorage.setItem('apiCall', JSON.stringify(data));
           console.log("Set initial Session Storage for apiCall!")
+
+          //obviously a hack to make it work for the first page load
+          window.location.reload()
         });
     }
     else {
