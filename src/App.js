@@ -24,6 +24,7 @@ function App() {
   // state
   const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === '1');
   const [view, setView] = useState('home');
+  const [country, setCountry] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
   const countriesData = useRef(undefined);
@@ -93,10 +94,31 @@ function App() {
     // only run if darkMode is updated (when theme button is clicked)
   }, [darkMode]);
 
-  // TODO: implement
-  function viewDetails(country) {
+  function callbackHome(data) {
     setView('details');
+    setCountry(data);
   }
+  function callbackDetailView() {
+    setView('home');
+    setCountry(undefined);
+  }
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+  else {
+    console.log("RENDERING");
+    return (
+      <div className="App">
+        <Header darkMode={darkMode} callback={() => { setDarkMode(!darkMode) }} />
+        {view === 'home' && <Home countriesData={countriesData.current} callback={callbackHome} />}
+        {view === 'details' && <DetailView countryData={country} callback={callbackDetailView} />}
+      </div>
+    );
+  }
+}
+
+export default App;
 
   // const countryData = {
   //   countryname: "Belgium",
@@ -112,20 +134,3 @@ function App() {
   //   },
   //   bordercountries: ["France", "Germany", "Netherlands"]
   // }
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
-  else {
-    console.log("RENDERING");
-    return (
-      <div className="App">
-        <Header darkMode={darkMode} callback={() => { setDarkMode(!darkMode) }} />
-        <Home countriesData={countriesData.current} />
-        {/* <DetailView countryData={countriesData[1]} /> */}
-      </div>
-    );
-  }
-}
-
-export default App;

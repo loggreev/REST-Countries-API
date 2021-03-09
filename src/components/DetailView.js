@@ -21,7 +21,7 @@ function DetailView(props) {
 
     return (
         <div className="DetailView">
-            <div className="element back-button shadow">
+            <div className="element back-button shadow" onClick={props.callback}>
                 <FontAwesomeIcon icon={faArrowLeft} />
                 &nbsp;
             Back

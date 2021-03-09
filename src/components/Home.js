@@ -9,6 +9,7 @@ const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 function Home(props) {
     const [region, setRegion] = useState("All");
     const [displayDropdown, setDisplayDropdown] = useState(false);
+
     const dropdown_items = (
         <div className="dropdown-items element">
             {regions.map((r) =>
@@ -26,9 +27,8 @@ function Home(props) {
         }
     }
 
-    console.log(props);
     const countries = props.countriesData.map((country) => (
-        <MiniCountryContainer key={country.countryname} countryData={country} />
+        <MiniCountryContainer key={country.countryname} countryData={country} onClick={() => { props.callback(country) }} />
     ));
 
     const dropdown_text = (region === "All") ? "Filter by Region" : "Region: " + region;

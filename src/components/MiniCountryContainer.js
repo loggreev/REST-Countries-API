@@ -5,7 +5,7 @@ import './MiniCountryContainer.css'
 function MiniCountryContainer(props) {
     const countryData = props.countryData;
     return (
-        <div className="MiniCountryContainer element">
+        <div className="MiniCountryContainer element" onClick={props.onClick}>
             <Flag flag={countryData.flag} />
             <div className="bottom">
                 <h1>{countryData.countryname}</h1>
