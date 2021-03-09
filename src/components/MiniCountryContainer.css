@@ -1,0 +1,13 @@
+.MiniCountryContainer.element{
+    padding-top: 0;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.MiniCountryContainer .bottom{
+    padding: 25px 30px;
+}
+
+.MiniCountryContainer h1{
+    font-size: 1.5em;
+}

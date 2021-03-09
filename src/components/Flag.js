@@ -1,10 +1,7 @@
-import './Flag.css'
-
 function Flag(props) {
-
     return (
         <div className="Flag">
-            <img src="" alt="country flag" />
+            <img src={props.flag} alt="country flag" width="100%" />
         </div>
     );
 }

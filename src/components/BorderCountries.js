@@ -1,18 +1,25 @@
 import './BorderCountries.css'
-import BorderCountriesItem from './BorderCountriesItem'
 
 function BorderCountries(props) {
-
-    return (
-        <div className="BorderCountries">
-            <h2>Border Countries:</h2>
-            <div className="container">
-                <BorderCountriesItem />
-                <BorderCountriesItem />
-                <BorderCountriesItem />
+    const borderCountries = props.data;
+    if (borderCountries.length > 0) {
+        const borderCountryItems = borderCountries.map(country =>
+            <div key={country} className="item element shadow">
+                {country}
             </div>
-        </div>
-    );
+        );
+
+        return (
+            <div className="BorderCountries">
+                <p><b>Border Countries:</b></p>
+                <div className="flex-container">
+                    {borderCountryItems}
+                </div>
+            </div>
+        );
+    }
+    else
+        return null;
 }
 
 export default BorderCountries;

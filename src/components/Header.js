@@ -1,16 +1,32 @@
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 
 function Header(props) {
+    let theme_switch;
+    if (!props.darkMode) {
+        theme_switch = (
+            <div id="theme-switch" onClick={props.callback}>
+                <FontAwesomeIcon icon={faMoon} />
+                &nbsp;
+                Dark Mode
+            </div>
+        );
+    }
+    else {
+        theme_switch = (
+            <div id="theme-switch" onClick={props.callback}>
+                <FontAwesomeIcon icon={faSun} />
+                &nbsp;
+                Light Mode
+            </div>
+        );
+    }
 
     return (
-        <header>
+        <header className="element" id="header">
             <div id="header-title">Where in the world?</div>
-            <div id="theme-switch">
-                <FontAwesomeIcon icon={faMoon} />
-            Dark Mode
-            </div>
+            {theme_switch}
         </header>
     );
 }

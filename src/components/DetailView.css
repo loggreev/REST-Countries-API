@@ -1,0 +1,13 @@
+.DetailView{
+    margin-top: 39px;
+    margin-left: 28px;
+    margin-right: 28px;
+}
+
+.DetailView .Flag{
+    margin: 50px 0;
+}
+
+.DetailView .back-button{
+    width: 105px;
+}

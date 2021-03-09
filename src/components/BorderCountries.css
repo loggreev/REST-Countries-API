@@ -1,0 +1,20 @@
+.BorderCountries p{
+    font-size: 1.1em;
+}
+
+.BorderCountries .flex-container{
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.BorderCountries .item{
+    flex: 1;
+    font-size: 0.9em;
+    min-width: 96px;
+    max-width: 100px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px 0;
+}
