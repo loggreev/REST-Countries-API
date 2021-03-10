@@ -13,7 +13,10 @@ function Home(props) {
     const dropdown_items = (
         <div className="dropdown-items element">
             {regions.map((r) =>
-                <div key={r} className="option" onClick={() => { setRegion(r) }}>{r}</div>
+                <div key={r} className="option" onClick={() => {
+                    setRegion(r);
+                    props.callRegion(r);
+                }}>{r}</div>
             )}
         </div>
     );
@@ -28,7 +31,7 @@ function Home(props) {
     }
 
     const countries = props.countriesData.map((country) => (
-        <MiniCountryContainer key={country.countryname} countryData={country} onClick={() => { props.callback(country) }} />
+        <MiniCountryContainer key={country.countryname} countryData={country} onClick={() => { props.viewCountryDetails(country) }} />
     ));
 
     const dropdown_text = (region === "All") ? "Filter by Region" : "Region: " + region;
@@ -37,11 +40,13 @@ function Home(props) {
         <div className="Home">
             <div className="search-filter-container">
                 <div className="search-input element shadow">
-                    <FontAwesomeIcon icon={faSearch} />
-                    <input type="text" placeholder="Search for a country..." />
+                    <FontAwesomeIcon icon={faSearch} onClick={() => {
+                        props.callName(document.getElementById('search').value);
+                    }} />
+                    <input type="text" id="search" placeholder="Search for a country..." />
                 </div>
                 <div className="filter-dropdown element shadow" onClick={(e) => {
-                    e.stopPropagation();
+                    // e.stopPropagation();
                     toggleDropdown(e);
                 }}>
                     <div className="filter-dropdown-text">

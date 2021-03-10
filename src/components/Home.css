@@ -67,6 +67,11 @@
     margin: 15px 0;
 }
 
+/* font awesome search icon */
+.svg-inline--fa.fa-search {
+    cursor: pointer;
+}
+
 @media (orientation: landscape){
     .Home .search-filter-container{
         display: flex;

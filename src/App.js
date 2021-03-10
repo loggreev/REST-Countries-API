@@ -31,11 +31,41 @@ function App() {
   console.log('');
   console.log("RUNNING APP")
 
-  function callApi() {
+  // componentDidMount + componentDidUpdate for loading
+  useEffect(() => {
+    // I'd like to call this only once
+    callApi('https://restcountries.eu/rest/v2/all');
+
+    if (!countriesData.current)
+      countriesData.current = JSON.parse(sessionStorage.getItem('apiCall'));
+    console.log("IN USEEFFECT FOR LOADING");
+    console.log(countriesData);
+
+    // setting state in its own update function sounds like a bad idea
+    setLoading(false);
+  }, [loading])
+
+  // componentDidMount + componentDidUpdate for darkMode
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('darkMode');
+      document.body.classList.remove('lightMode');
+      localStorage.setItem('darkMode', 1);
+    }
+    else {
+      document.body.classList.add('lightMode')
+      document.body.classList.remove('darkMode');
+      localStorage.setItem('darkMode', 0);
+    }
+
+    // only run if darkMode is updated (when theme button is clicked)
+  }, [darkMode]);
+
+  function callApi(api_url) {
     // store api results in session storage (expires when tab is closed)
     if (!sessionStorage.getItem('apiCall')) {
       // fetch(new Request('https://restcountries.eu/rest/v2/lang/es'))
-      fetch(new Request('https://restcountries.eu/rest/v2/all'))
+      fetch(new Request(api_url))
         .then(response => response.json())
         .then(parsedJSON => {
           const data = parsedJSON.map((country) => {
@@ -67,39 +97,20 @@ function App() {
     }
   }
 
-  // componentDidMount + componentDidUpdate for loading
-  useEffect(() => {
-    // I'd like to call this only once
-    callApi();
-
-    if (!countriesData.current)
-      countriesData.current = JSON.parse(sessionStorage.getItem('apiCall'));
-    console.log("IN USEEFFECT FOR LOADING");
-    console.log(countriesData);
-
-    // setting state in its own update function sounds like a bad idea
-    setLoading(false);
-  }, [loading])
-
-  // componentDidMount + componentDidUpdate for darkMode
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('darkMode');
-      document.body.classList.remove('lightMode');
-      localStorage.setItem('darkMode', 1);
-    }
-    else {
-      document.body.classList.add('lightMode')
-      document.body.classList.remove('darkMode');
-      localStorage.setItem('darkMode', 0);
-    }
-
-    // only run if darkMode is updated (when theme button is clicked)
-  }, [darkMode]);
-
-  function callbackHome(data) {
+  function viewCountryDetails(data) {
     setView('details');
     setCountry(data);
+  }
+  function callRegion(data) {
+    sessionStorage.clear();
+    if (data === "All")
+      callApi(`https://restcountries.eu/rest/v2/all`);
+    else
+      callApi(`https://restcountries.eu/rest/v2/region/${data}`);
+  }
+  function callName(data) {
+    sessionStorage.clear();
+    callApi(`https://restcountries.eu/rest/v2/name/${data}`);
   }
   function callbackDetailView() {
     setView('home');
@@ -114,7 +125,7 @@ function App() {
     return (
       <div className="App">
         <Header darkMode={darkMode} callback={() => { setDarkMode(!darkMode) }} />
-        {view === 'home' && <Home countriesData={countriesData.current} callback={callbackHome} />}
+        {view === 'home' && <Home countriesData={countriesData.current} viewCountryDetails={viewCountryDetails} callRegion={callRegion} callName={callName} />}
         {view === 'details' && <DetailView countryData={country} callback={callbackDetailView} />}
       </div>
     );
