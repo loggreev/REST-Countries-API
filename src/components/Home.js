@@ -30,9 +30,13 @@ function Home(props) {
         }
     }
 
-    const countries = props.countriesData.map((country) => (
-        <MiniCountryContainer key={country.countryname} countryData={country} onClick={() => { props.viewCountryDetails(country) }} />
-    ));
+    // display countriesData based on whether or not it has loaded
+    const countries = props.countriesData ?
+        props.countriesData.map((country) => (
+            <MiniCountryContainer key={country.countryname} countryData={country} onClick={() => { props.viewCountryDetails(country) }} />
+        ))
+        :
+        <div>Loading...</div>;
 
     const dropdown_text = (region === "All") ? "Filter by Region" : "Region: " + region;
 
