@@ -19,7 +19,7 @@ function App() {
 
   // componentDidMount
   useEffect(() => {
-    callApi('https://restcountries.eu/rest/v2/all');
+    callApi('https://restcountries.com/v2/all');
   }, []);
 
   // componentDidMount + componentDidUpdate for darkMode
@@ -80,13 +80,13 @@ function App() {
   function callRegion(data) {
     sessionStorage.clear();
     if (data === "All")
-      callApi(`https://restcountries.eu/rest/v2/all`);
+      callApi(`https://restcountries.com/v2/all`);
     else
-      callApi(`https://restcountries.eu/rest/v2/region/${data}`);
+      callApi(`https://restcountries.com/v2/region/${data}`);
   }
   function callName(data) {
     sessionStorage.clear();
-    callApi(`https://restcountries.eu/rest/v2/name/${data}`);
+    callApi(`https://restcountries.com/v2/name/${data}`);
   }
   function callbackDetailView() {
     setView('home');
